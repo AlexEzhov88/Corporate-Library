@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="1711280656905-3" author="aleks">
+        <createTable tableName="reviews">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_reviews"/>
+            </column>
+            <column name="book_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="rating" type="INT"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

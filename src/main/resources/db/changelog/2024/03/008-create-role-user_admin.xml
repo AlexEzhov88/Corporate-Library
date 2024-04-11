@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="create-pgcrypto-extension" author="aleks">
+        <sql>
+            CREATE
+            EXTENSION IF NOT EXISTS pgcrypto;
+        </sql>
+    </changeSet>
+    <changeSet id="insert-roles" author="aleks">
+        <insert tableName="roles">
+            <column name="id" value="1"/>
+            <column name="name" value="USER"/>
+        </insert>
+        <insert tableName="roles">
+            <column name="id" value="2"/>
+            <column name="name" value="ADMIN"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert-users-with-bcrypt" author="aleks">
+        <insert tableName="users">
+            <column name="username" value="admin1"/>
+            <column name="password" valueComputed="crypt('admin1', gen_salt('bf'))"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="admin2"/>
+            <column name="password" valueComputed="crypt('admin2', gen_salt('bf'))"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="user1"/>
+            <column name="password" valueComputed="crypt('user1', gen_salt('bf'))"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="user2"/>
+            <column name="password" valueComputed="crypt('user2', gen_salt('bf'))"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

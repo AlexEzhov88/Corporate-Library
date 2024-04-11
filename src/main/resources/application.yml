@@ -1,0 +1,37 @@
+spring:
+  file:
+    book-input: data/work_book_denormalized.csv
+    review-input: data/ratings.csv
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+  application:
+    name: final
+  datasource:
+    driver-class-name: ${DATABASE_DRIVER:org.postgresql.Driver}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/bookdb}
+    username: ${DATABASE_USER:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  liquibase:
+    drop-first: true
+    change-log: db/changelog/db.changelog-master.xml
+    contexts: local
+application:
+  security:
+    jwt:
+      secret-key: ${SPRING_SECURITY_JWT_SECRET_KEY}
+      expiration: 86400000
+logging:
+  level:
+    org.springframework.batch: WARN
+    org.springframework.jdbc.core.JdbcTemplate: WARN
+    org.springframework.transaction: WARN
+    ru.liga.book: WARN
+server:
+  port: 8080

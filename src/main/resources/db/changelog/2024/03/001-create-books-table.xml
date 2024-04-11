@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="1711280656905-1" author="aleks">
+        <createTable tableName="books">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_books"/>
+            </column>
+            <column name="isbn" type="VARCHAR(255)"/>
+            <column name="isbn13" type="DOUBLE">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="VARCHAR(1000)"/>
+            <column name="original_publication_year" type="DOUBLE"/>
+            <column name="original_title" type="VARCHAR(1000)"/>
+            <column name="title" type="VARCHAR(1000)"/>
+            <column name="lang_code" type="VARCHAR(255)"/>
+            <column name="image_url" type="TEXT"/>
+            <column name="small_image_url" type="VARCHAR(1000)"/>
+            <column name="rating_count" type="INT"/>
+            <column name="rating_avg" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
